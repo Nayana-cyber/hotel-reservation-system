@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Reservation List</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Guest Name</th>
+            <th>Room Type</th>
+            <th>Check-in Date</th>
+            <th>Check-out Date</th>
+            <th>Total Price</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reservation in reservations %}
+        <tr>
+            <td>{{ reservation.guest.first_name }} {{ reservation.guest.last_name }}</td>
+            <td>{{ reservation.room.room_type }}</td>
+            <td>{{ reservation.check_in_date }}</td>
+            <td>{{ reservation.check_out_date }}</td>
+            <td>{{ reservation.total_price }}</td>
+            <td>{{ reservation.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

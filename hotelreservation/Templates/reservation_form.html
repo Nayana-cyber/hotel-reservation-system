@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Create a New Reservation for {{ hotel.name }}</h2>
+<form method="POST">
+    {% csrf_token %}
+    <label for="room">Room Type:</label>
+    <select name="room" id="room">
+        {% for room in rooms %}
+        <option value="{{ room.id }}">{{ room.room_type }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="check_in_date">Check-in Date:</label>
+    <input type="date" name="check_in_date" id="check_in_date" required>
+    
+    <label for="check_out_date">Check-out Date:</label>
+    <input type="date" name="check_out_date" id="check_out_date" required>
+    
+    <label for="total_price">Total Price:</label>
+    <input type="text" name="total_price" id="total_price" readonly>
+    
+    <button type="submit">Reserve</button>
+</form>
+{% endblock %}
